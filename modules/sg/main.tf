@@ -119,6 +119,6 @@ resource "aws_security_group" "database_security_group" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
   tags   = {
-    Name = "SSH Security Group"
+    Name = "database security group"
   }
 }
