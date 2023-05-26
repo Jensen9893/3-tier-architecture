@@ -35,7 +35,7 @@ resource "aws_security_group" "alb_security_group" {
 resource "aws_security_group" "ssh_security_group" {
   name        = "SSH Access"
   description = "Enable SSH access on Port 22"
-  vpc_id      = var.vpc.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description      = "SSH access"
@@ -93,7 +93,7 @@ resource "aws_security_group" "ec2_security_group" {
   }
 
   tags   = {
-    Name = "Database security group"
+    Name = "ec2 security group"
   }
 }
 
@@ -102,7 +102,7 @@ resource "aws_security_group" "ec2_security_group" {
 resource "aws_security_group" "database_security_group" {
   name        = "Database security group"
   description = "Enable PostgreSQL access on port 5432"
-  vpc_id      = var.vpc.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description      = "PostgreSQL Access"

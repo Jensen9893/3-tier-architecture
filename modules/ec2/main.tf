@@ -8,18 +8,18 @@ data "aws_ami" "ubuntu" {
     }
     
     filter {
-        name = "virtualization - type"
+        name = "virtualization-type"
         values = ["hvm"]
     }
 
-    owners = ["AWS"]
+    owners = ["099720109477"] #099720109477 #191744333065
 }
 
 # create private app ec2 az01
 resource "aws_instance" "private_app_ec2_az_01" {
   ami = data.aws_ami.ubuntu.id
   instance_type = var.my_instance_type
-  subnet_id = [var.private_app_subnet_az_01_id]
+  subnet_id = var.private_app_subnet_az_01_id
   vpc_security_group_ids = [var.ec2_security_group_id]
   tags = {
     Name = "private app ec2 az 01 "
@@ -30,7 +30,7 @@ resource "aws_instance" "private_app_ec2_az_01" {
 resource "aws_instance" "private_app_ec2_az_02" {
   ami = data.aws_ami.ubuntu.id
   instance_type = var.my_instance_type
-  subnet_id = [var.private_app_subnet_az_02_id]
+  subnet_id = var.private_app_subnet_az_02_id
   vpc_security_group_ids = [var.ec2_security_group_id]
   tags = {
     Name = "private app ec2 az 02 "

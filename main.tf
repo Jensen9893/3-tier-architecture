@@ -44,6 +44,6 @@ module "ec2_instance" {
   my_instance_type            = var.my_instance_type
   private_app_subnet_az_01_id = module.vpc.private_app_subnet_az_01_id
   private_app_subnet_az_02_id = module.vpc.private_app_subnet_az_02_id
-  ec2_security_group_id       = module.sg.ec2_security_group_id
+  ec2_security_group_id       = module.security_group.ec2_security_group_id
 
 }
