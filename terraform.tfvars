@@ -9,3 +9,5 @@ private_data_subnet_az_01_cidr  = "10.0.4.0/24"
 private_data_subnet_az_02_cidr  = "10.0.5.0/24"
 my_instance_type                = "t3.micro"
 # ec2_security_group_id           = [var.ec2_security_group_id]
+domain_name                     = "heliostech.com"
+alternative_name                = ".heliostech.com"

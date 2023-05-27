@@ -47,3 +47,21 @@ module "ec2_instance" {
   ec2_security_group_id       = module.security_group.ec2_security_group_id
 
 }
+
+# create acm
+module "acm" {
+  source            = "./modules/acm"
+  domain_name       = var.domain_name
+  alternative_name  = var.alternative_name
+}
+
+# create application load balancer
+module "application_load_balancer"{
+  source                  = "./modules/alb"
+  my_project              = module.vpc.my_project
+  alb_security_group_id   = module.security_group.alb_security_group_id
+  public_subnet_az_01_id  = module.vpc.public_subnet_az_01_id
+  public_subnet_az_02_id  = module.vpc.public_subnet_az_02_id
+  vpc_id                  = module.vpc.vpc_id
+  certificate_arn         = module.acm.certificate_arn
+}
