@@ -1,7 +1,7 @@
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az01 
 resource "aws_eip" "eip_for_nat_gateway_az01" {
-  vpc    = true
-
+  # vpc    = true  -  #deprecated
+  domain = "vpc"
   tags   = {
     Name = "nat gateway az01 eip "
   }
@@ -9,8 +9,8 @@ resource "aws_eip" "eip_for_nat_gateway_az01" {
 
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az02
 resource "aws_eip" "eip_for_nat_gateway_az02" {
-  vpc    = true
-
+  # vpc    = true  -  #deprecated
+  domain = "vpc"
   tags   = {
     Name = "nat gateway az02 eip "
   }
